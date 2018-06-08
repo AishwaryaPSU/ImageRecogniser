@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aishwaryagm.objectrecogniser">
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name=".services.ObjectRecogniserService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":my_process">
+            <intent-filter>
+                <action android:name="com.aishwaryagm.objectrecogniser.services.ObjectRecogniserService" />
+            </intent-filter>
+        </service>
         <activity android:name="com.aishwaryagm.objectrecogniser.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
